@@ -35,6 +35,10 @@ export default {
 				{
 					find: '@tests',
 					replacement: path.resolve(__dirname, 'src/tests')
+				},
+				{
+					find: '@styles',
+					replacement: path.resolve(__dirname, 'src/styles')
 				}
 			]
 		}),
