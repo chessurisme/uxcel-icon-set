@@ -1,6 +1,7 @@
 import alias from '@rollup/plugin-alias';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import postcss from 'rollup-plugin-postcss';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
@@ -46,6 +47,10 @@ export default {
 			extensions: ['.js', '.mjs', '.json', '.node'],
 			preferBuiltins: true
 		}),
-		commonjs()
+		commonjs(),
+		postcss({
+			extract: true, // This will extract the CSS to a separate file
+			minimize: true // Optional: minify the CSS
+		})
 	]
 };
