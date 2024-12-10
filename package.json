@@ -1,0 +1,18 @@
+{
+  "name": "uxcel-icon-set",
+  "version": "1.0.0",
+  "description": "Discover Uxcel's comprehensive Free Icon Set, a versatile collection of over 500 beautifully crafted, pixel-perfect icons, now had a dedicated website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "uxcel",
+    "icon-library",
+    "icon-set",
+    "icons",
+    "ui-icons"
+  ],
+  "author": "Chessurisme",
+  "license": "MIT"
+}
