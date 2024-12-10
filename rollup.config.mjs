@@ -1,6 +1,7 @@
 import alias from '@rollup/plugin-alias';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import path from 'path';
 
 export default {
 	input: 'src/index.js',
@@ -11,22 +12,32 @@ export default {
 	plugins: [
 		alias({
 			entries: [
-				{ find: '@utilities', replacement: './src/utilities' },
-				{ find: '@icons', replacement: './src/icons' },
-				{ find: '@components', replacement: './src/components' },
-				{ find: '@pages', replacement: './src/pages' },
-				{ find: '@tests', replacement: './src/tests' }
+				{
+					find: '@utilities',
+					replacement: path.resolve(__dirname, 'src/utilities')
+				},
+				{
+					find: '@icons',
+					replacement: path.resolve(__dirname, 'src/icons')
+				},
+				{
+					find: '@components',
+					replacement: path.resolve(__dirname, 'src/components')
+				},
+				{
+					find: '@pages',
+					replacement: path.resolve(__dirname, 'src/pages')
+				},
+				{
+					find: '@tests',
+					replacement: path.resolve(__dirname, 'src/tests')
+				}
 			]
 		}),
-		nodeResolve(),
-		commonjs(),
-		{
-			name: 'file-extract',
-			resolveId(source) {
-				if (source.includes('.svg')) {
-					return source.replace(/^@/, './src/');
-				}
-			}
-		}
+		nodeResolve({
+			extensions: ['.js', '.mjs', '.json', '.node'],
+			preferBuiltins: true
+		}),
+		commonjs()
 	]
 };
