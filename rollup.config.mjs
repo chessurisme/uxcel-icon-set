@@ -4,6 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import copy from 'rollup-plugin-copy';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -49,8 +50,14 @@ export default {
 		}),
 		commonjs(),
 		postcss({
-			extract: true, // This will extract the CSS to a separate file
-			minimize: true // Optional: minify the CSS
+			extract: true,
+			minimize: true
+		}),
+		copy({
+			targets: [
+				{ src: 'src/index.html', dest: 'dist/' },
+				{ src: 'src/assets', dest: 'dist/' }
+			]
 		})
 	]
 };
