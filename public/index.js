@@ -58,7 +58,7 @@ class HeadingUxcelIcons {
 		by.textContent = 'by';
 
 		const uxcelIconsLogo = createComponent('img', {
-			src: '../assets/images/brand.svg',
+			src: './assets/images/brand.svg',
 			id: 'uxcel-icons-logo',
 			class: 'uxcel-icons-logo',
 			alt: 'Uxcel Icon Logo',
@@ -119,7 +119,7 @@ class SearchBar {
 		const leadingIcon = createComponent('img', {
 			id: 'search-icon',
 			alt: 'Search icon',
-			src: '../icons/Ecommerce/Outline/Search.svg'
+			src: './assets/icons/Search.svg'
 		});
 
 		const searchBar = createComponent('input', {
@@ -253,15 +253,17 @@ class Links {
 	}
 
 	#create() {
+		const uxcelLink = this.#createUxcelLink();
 		const sourceCodeLink = this.#createSourceCodeLink();
 		const figmaLink = this.#createFigmaLink();
+
 		const component = createComponent(
 			'div',
 			{
 				id: 'links',
 				class: 'links'
 			},
-			[sourceCodeLink, figmaLink]
+			[uxcelLink, sourceCodeLink, figmaLink]
 		);
 		return component;
 	}
@@ -270,7 +272,7 @@ class Links {
 		const tabIcon = createComponent('img', {
 			alt: 'Tab icon',
 			class: 'tab-icon',
-			src: '../icons/Arrows/Outline/New_Tab.svg'
+			src: './assets/icons/New_Tab.svg'
 		});
 		return tabIcon;
 	}
@@ -283,8 +285,7 @@ class Links {
 
 		const linkComponent = createComponent('a', {
 			href: link,
-			target: '_blank',
-			rel: 'noopener noreferrer'
+			target: '_blank'
 		});
 		linkComponent.textContent = text;
 
@@ -296,6 +297,10 @@ class Links {
 		wrapper.appendChild(this.#createTabIcon());
 
 		return wrapper;
+	}
+
+	#createUxcelLink() {
+		return this.#createWrapperLink('Uxcel', 'https://uxcel.com?ref=chessurisme&utm_source=uxcel-icon-set.vercel.app');
 	}
 
 	#createSourceCodeLink() {
