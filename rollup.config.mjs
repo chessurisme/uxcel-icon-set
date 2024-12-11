@@ -41,6 +41,10 @@ export default {
 				{
 					find: '@styles',
 					replacement: path.resolve(__dirname, 'src/styles')
+				},
+				{
+					find: '@animations',
+					replacement: path.resolve(__dirname, 'src/animations')
 				}
 			]
 		}),
